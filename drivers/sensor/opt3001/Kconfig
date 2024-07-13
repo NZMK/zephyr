@@ -10,3 +10,26 @@ config OPT3001
 	select I2C
 	help
 	  Enable driver for OPT3001 light sensors.
+
+if OPT3001
+
+choice
+	prompt "Trigger Mode"
+	default OPT3001_TRIGGER_NONE
+	help
+	  Specify the type of triggering to be used by the driver.
+
+config OPT3001_TRIGGER_NONE
+	bool "No Trigger"
+
+config OPT3001_TRIGGER_GLOBAL_THREAD
+	bool "Use global thread"
+	depends on GPIO
+	select OPT3001_TRIGGER
+
+endchoice # Trigger Mode
+
+config OPT3001_TRIGGER
+	bool
+
+endif # OPT3001

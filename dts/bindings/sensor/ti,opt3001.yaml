@@ -6,3 +6,10 @@ description: Texas Instruments OPT3001 ambient light sensor
 compatible: "ti,opt3001"
 
 include: [sensor-device.yaml, i2c-device.yaml]
+
+properties:
+  int-gpios:
+    type: phandle-array
+    description: |
+      The INT pin signals that a programmable interrupt function with upper and
+      lower thresholds has been triggered. The pin is active-low open drain.
